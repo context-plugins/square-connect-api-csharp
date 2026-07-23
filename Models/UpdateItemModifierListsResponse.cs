@@ -1,0 +1,21 @@
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
+namespace SquareConnectApi.Models;
+
+public record UpdateItemModifierListsResponse
+{
+    /// <summary>
+    /// Any errors that occurred during the request.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("errors")]
+    public IReadOnlyList<Error>? Errors { get; init; }
+
+    /// <summary>
+    /// The database <see href="https://developer.squareup.com/docs/build-basics/working-with-date">timestamp</see> of this update in RFC 3339 format, e.g., <c>2016-09-04T23:59:33.123Z</c>.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("updated_at")]
+    public string? UpdatedAt { get; init; }
+}
